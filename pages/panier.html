@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchify - Panier</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        body {
+            font-family: "Poppins";
+            /* height: 2500px; */
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <link rel="stylesheet" href="../assets/css/input.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+        <!-- Navbar -->
+        <header id="nav"
+            class="flex items-center justify-between py-3 px-5 my-4 mx-auto rounded-md bg-white drop-shadow-md w-[100%]"
+            style="max-width: 1000px; position: fixed;top: 0;left: 50%; transform: translate(-50%); z-index:99;">
+            <div class="logo w-[70px] h-[50px]">
+                <img class="w-[100%] h-[100%]" src="../assets/img/logo.png"
+                    alt="watchify">
+            </div>
+            <form action="/"
+                class="bg-slate-100 rounded-md py-1 pr-3 flex items-center justify-between w-[30%] drop-shadow-sm">
+                <input type="search"
+                    class="bg-transparent w-[90%] h-[25px] rounded-md pl-3 py-0.5 outline-none text-xs placeholder:text-xs"
+                    placeholder="Recherche..">
+                <i class="fa fa-search cursor-pointer"></i>
+            </form>
+            <nav>
+                <ul class="flex items-center" id="nav-menu">
+                    <li class="link mr-5"><a
+                            class="text-sm tracking-wide font-normal hover:text-blue-600 transition-colors ease-in-out"
+                            href="index.html">Accueil</a></li>
+                    <li class="link mr-5"><a
+                            class="text-sm tracking-wide font-normal hover:text-blue-600 transition-colors ease-in-out"
+                            href="catalog.html">Catalogue</a></li>
+                    <li class="link mr-7"><a
+                            class="text-sm tracking-wide font-normal hover:text-blue-600 transition-colors ease-in-out"
+                            href="about.html">Apropos</a></li>
+                </ul>
+            </nav>
+            <div class="link bg-slate-100 p-1 rounded-md drop-shadow-sm"><a
+                    href="#"><i
+                        class="fa-solid fa-bag-shopping text-lg hover:text-blue-600 transition-colors"
+                        id="shop-bag"></i></a>
+                <span id="Product-counter"
+                    class="text-xs text-blue-600">0</span>
+            </div>
+
+        <img id="menu-icon" class="cursor-pointer" src="../assets/img/menu.png" alt="menu" style="width:25px;">
+        <img id="close-menu_icon" class="cursor-pointer" src="../assets/img/fermer.png" alt="closemenu"
+            style="width:25px;">
+
+
+    </Header>
+
+    <main class="mt-[100px]">
+        <!-- Section de Panier -->
+        <section class="mx-20 py-10">
+            <div class="flex items-center gap-3">
+                <div class="w-5 h-14 bg-blue-600 rounded-sm"></div>
+                <h1 class="font-bold text-blue-600 text-2xl">Panier (<span id="cout-products"></span> Articles)</h1>
+            </div>
+
+            <div id="panier-message" class="py-10 hidden">
+                <h1 class="text-center text-gray-700 font-semibold text-2xl">Aucun Produit n'est ajouté au Panier !</h1>
+            </div>
+
+            <div id="panier-products-container" class="flex flex-col gap-3 my-10">
+
+            </div>
+
+                <div
+                    class="flex justify-between items-center flex-wrap gap-5 self-center">
+                    <div class="flex">
+                        <input
+                            class="bg-gray-100 px-5 py-2 border-gray-200 border-solid border rounded-s-md outline-none focus:border-black"
+                            type="text" placeholder="Code Promo">
+                        <button
+                            class="px-4 py-2 bg-blue-500 font-medium text-white rounded-r-md transition-all duration-500 hover:bg-blue-950"
+                            type="button">OK</button>
+                    </div>
+                    <a href="catalog.html"><button id="ok"
+                            class="px-7 py-2 bg-blue-600 text-white font-medium rounded-md transition-all duration-500 hover:bg-blue-950">Continuer
+                            les Achats</button></a>
+                </div>
+            </section>
+
+        <!-- Section des Produits Intéressants -->
+        <section class="mx-20 py-10">
+            <div class="flex items-center gap-3">
+                <div class="w-5 h-14 bg-blue-600 rounded-sm"></div>
+                <h1 class="font-bold text-blue-600 text-2xl">Vous pourriez
+                    être intéressé par ...</h1>
+            </div>
+
+            <div id="interested" class="flex items-center justify-center py-10 flex-wrap gap-3">
+
+            </div>
+        </section>
+
+        <!-- Section de Confirmation du Commande et Téléchargement du Devis -->
+        <section class="mx-20 py-10">
+            <div class="flex items-center gap-3">
+                <div class="w-5 h-14 bg-blue-600 rounded-sm"></div>
+                <h1 class="font-bold text-blue-600 text-2xl">Confirmation de
+                    Commande</h1>
+            </div>
+
+            <div class="flex gap-10 mt-10 flex-wrap">
+                <div class="flex flex-col flex-1 bg-gray-100 px-5 py-5 gap-5 border border-gray-300 rounded-md h-min ">
+                    <h1 class="text-2xl font-medium">Total du Panier</h1>
+                    <div id="total-panier-products" class="flex flex-col gap-5 px-3">
+
+                    </div>
+                    <hr class="border-black">
+                    <div class="flex justify-between items-center px-3">
+                        <h1 class="text-xl font-semibold">Total</h1>
+                        <h2 id="total-price-panier" class="font-semibold justify-self-end"></h2>
+                    </div>
+                </div>
+                <div class="flex flex-col flex-1">
+                    <form action id="form-devis" class="flex flex-col">
+                        <label class="mb-1 ml-1" for="name">
+                            Nom Complet
+                            <span id="alert-name" class="text-sm text-red-500 ml-5"></span>
+                        </label>
+                        <input
+                            class="focus:border-blue-950 outline-none py-2 rounded-md border border-gray-300 px-3 bg-gray-200 placeholder:text-gray-500"
+                            placeholder="Ex: Peter Johnson" type="text" name="name" required>
+
+                        <label class="mt-4 mb-1 ml-1" for="phone">
+                            Numéro de Téléphone
+                            <span id="alert-phone" class="text-sm text-red-500 ml-5"></span>
+                        </label>
+                        <input
+                            class="focus:border-blue-950 outline-none py-2 rounded-md border border-gray-300 px-3 bg-gray-200 placeholder:text-gray-500"
+                            placeholder="Ex: +212 612345678" type="tel" name="phone" required>
+
+                        <label class="mt-4 mb-1 ml-1" for="email">
+                            Adresse Email
+                            <span id="alert-email" class="text-sm text-red-500 ml-5"></span>
+                        </label>
+                        <input
+                            class="focus:border-blue-950 outline-none py-2 rounded-md border border-gray-300 px-3 bg-gray-200 placeholder:text-gray-500"
+                            placeholder="Ex: j.peter@example.com" type="email" name="email" required>
+
+                        <label class="mt-4 mb-1 ml-1" for="adress">
+                            Adresse
+                            <span id="alert-address" class="text-sm text-red-500 ml-5"></span>
+                        </label>
+                        <input
+                            class="focus:border-blue-950 outline-none py-2 rounded-md border border-gray-300 px-3 bg-gray-200 placeholder:text-gray-500"
+                            placeholder="Ex: street, neighborhood, city, country" type="text" name="adress" required>
+
+                        <button id="download"
+                            class="py-2 mt-4 bg-blue-600 text-white rounded-md transition-all duration-500 hover:bg-blue-950"
+                            type="button">
+                            Confirmer la Commande
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!--NewsLetter-->
+    <section class="bg-blue-950 py-10 px-10">
+        <div class="text-white flex md:justify-between justify-center items-center flex-wrap gap-5">
+            <div>
+                <h1 class="text-3xl font-semibold mb-3">Notre Newsletter</h1>
+                <p class="font-light text-sm">Recevoir notre vouveaux produit et mise à jour</p>
+            </div>
+            <form class="flex border-none p-2 bg-white rounded-md max-w-[500px]">
+                <input class="md:grow border-none outline-none px-5 text-black" type="email" name=""
+                    placeholder="Email Example ..">
+                <button class="bg-blue-950 py-2 px-5 rounded-md hover:bg-blue-600" type="button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    <!------------------------>
+
+    <!-- Footer -->
+    <footer class="flex flex-col bg-black items-center py-8 md:px-20 px-10 ">
+        <div class="flex justify-between flex-wrap gap-x-2 gap-y-5 text-white w-full">
+            <img class="w-[100px] h-[70px]" src="../assets/img/watchify-white-logo.png" alt>
+            <div>
+                <h4 class="font-semibold mb-2">Support</h4>
+                <ul>
+                    <li class="font-thin mb-1.5">111 Bijoy sarani,
+                        Dhaka,<br>DH 1515, Bangladesh.</li>
+                    <li class="font-thin mb-1.5">exclusive@gmail.com</li>
+                    <li class="font-thin mb-1.5">+88015-88888-9999</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2">Account</h4>
+                <ul>
+                    <li class="font-thin mb-1.5"><a href="#">My
+                            Account</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Login /
+                            Register</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Cart</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Wishlist</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Shop</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-2">Quick Links</h4>
+                <ul>
+                    <li class="font-thin mb-1.5"><a href="#">Privacy
+                            Policy</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Terms Of
+                            Use</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">FAQ</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2">Download App</h4>
+                <span class="font-thin">Save $3 with App New User
+                    Only</span>
+                <img class="mt-3 max-w-[150px]" src="../assets/img/qr-app.png" alt>
+                <div class="flex gap-2 mt-5">
+                    <img class="w-[25px]" src="../assets/img/facebook.png" alt>
+                    <img class="w-[25px]" src="../assets/img/twitter.png" alt>
+                    <img class="w-[25px]" src="../assets/img/instagram.png" alt>
+                    <img class="w-[25px]" src="../assets/img/linkedin.png" alt>
+                </div>
+            </div>
+        </div>
+        <span class="font-thin text-sm text-stone-500 mt-10">Copyright Rimel
+            2022. All right reserved</span>
+    </footer>
+
+
+
+
+
+
+    <!-- Section de Popup de Confirmation de Suppression -->
+    <section id="popup-modal" tabindex="-1"
+        class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 hidden">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button" id="close-popup"
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="popup-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5 text-center">
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" width="64px" height="64px"
+                        viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#bababa">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path stroke="#bababa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M29 16a13 13 0 11-26 0 13 13 0 0126 0h0zM16 17.5v-8"></path>
+                            <path fill="#bababa" d="M17.5 22a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"></path>
+                        </g>
+                    </svg>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Êtes-vous sûr de vouloir
+                        supprimer ce produit ?</h3>
+                    <button id="confirm-delete" data-modal-hide="popup-modal" type="button"
+                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        Supprimer
+                    </button>
+                    <button id="cancel-delete" data-modal-hide="popup-modal" type="button"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <script src="../assets/js/panier.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

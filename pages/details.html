@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Watchify - details</title>
+</head>
+
+<body>
+    <style>
+        #d-quantite-input::-webkit-outer-spin-button,
+        #d-quantite-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+
+
+
+    <main class="px-20" id="d-main-container">
+
+        <Header
+            class="flex items-center justify-between py-3 px-5 my-4 mx-auto rounded-md bg-white drop-shadow-md w-[100%]"
+            style="max-width: 1000px; position: fixed;top: 0;left: 50%; transform: translate(-50%); z-index:99;">
+            <div class="logo w-[70px] h-[50px]">
+                <img class="w-[100%] h-[100%]" src="../assets/img/watchify.png" alt="watchify">
+            </div>
+            <form action="/"
+                class="bg-slate-100 rounded-md py-1 pr-3 flex items-center justify-between w-[30%] drop-shadow-sm">
+                <input type="search"
+                    class="bg-transparent w-[90%] h-[25px] rounded-md pl-3 py-0.5 outline-none text-xs placeholder:text-xs"
+                    placeholder="Recherche..">
+                <i class="fa fa-search cursor-pointer"></i>
+            </form>
+            <nav>
+                <ul class="flex items-center" id="nav-menu">
+                    <li class="link mr-5"><a
+                            class="text-sm tracking-wide font-normal hover:text-blue-600 transition-colors ease-in-out"
+                            href="index.html">Accueil</a></li>
+                    <li class="link mr-5"><a
+                            class="text-sm tracking-wide font-normal hover:text-blue-600 transition-colors ease-in-out"
+                            href="catalog.html">Catalogue</a></li>
+                    <li class="link mr-7"><a
+                            class="text-sm tracking-wide font-normal hover:text-blue-600 transition-colors ease-in-out"
+                            href="about.html">Apropos</a></li>
+                </ul>
+            </nav>
+            <div class="link bg-slate-100 p-1 rounded-md drop-shadow-sm"><a href="panier.html"><i
+                        class="fa-solid fa-bag-shopping text-lg hover:text-blue-600 transition-colors"
+                        id="shop-bag"></i></a>
+                <span id="Product-counter" class="text-xs text-blue-600">0</span>
+            </div>
+
+            <img id="menu-icon" class="cursor-pointer" src="../assets/img/menu.png" alt="menu" style="width:25px;">
+            <img id="close-menu_icon" class="cursor-pointer" src="../assets/img/fermer.png" alt="closemenu"
+                style="width:25px;">
+
+
+        </Header>
+
+
+        <!--Product details-->
+        <main class="flex gap-10 justify-center py-10" id="d-product-details" style="width: 100% ;margin-top: 100px">
+            <section class="flex-col" id="d-product-galerie" style="width: 100%;">
+
+            </section>
+
+            <section class="w-[100%]" id="product-informations">
+                <h2 id="d-product-name" class="text-[2rem] font-semibold capitalize mb-2">Fitbit-sense-2-frandroid</h2>
+                <p id="d-product-short_description" class="text-[1rem] font-normal mb-3" style="max-width:500px">
+                    Google Fitbit Sense 2 Montre connectée sport et santé avec GPS intégré, fonctionnalités avancées
+                    pour la
+                    santé, jusqu’à 6 jours d’autonomie de batterie - compatible avec iOS 15 & Android OS 9.0
+                </p>
+                <div class="d-product-prices flex gap-6 mb-5">
+                    <p class="font-semibold line-through">$<span id="old-price">125.00</span></p>
+                    <p class="font-semibold">$<span id="new-price">115.00</span></p>
+                </div>
+
+                <div class="flex gap-8 mb-5">
+                    <div class="d-product-quantity flex gap-3">
+                        <button id="decrement-button" type="button"
+                            class="outline-none text-[1.5rem] hover:text-blue-600">-</button>
+                        <input type="number" min="1" name="d-quantite" id="d-quantite-input"
+                            class="bg-slate-100 rounded-md max-w-[100px] text-center">
+                        <button id="increment-button" type="button"
+                            class="outline-none text-[1.5rem] hover:text-blue-600">+</button>
+                    </div>
+                    <div id="d-total-price" class="bg-slate-100 w-[100px] rounded-md flex items-center justify-center">
+                        <p class="px-2">$<span>212</span></p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5 mb-5">
+                    <button type="button" id="d-add-to-cart_btn"
+                        class="bg-blue-600 px-4 py-1 text-white rounded-md text-center hover:bg-[#183876] transition-colors ease-in-out">
+                        Ajouter Au Panier
+                    </button>
+                    <button type="button"
+                        class="bg-blue-600 px-2 py-1 text-white rounded-md text-center hover:bg-[#183876] transition-colors ease-in-out">
+                        <img class="w-[25px] my-auto" src="../assets/img/heart.png" alt="">
+                    </button>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-3">
+                        <p class="font-semibold text-md">Brand :</p>
+                        <p id="d-brand" class="font-light text-sm">fitbit</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <p class="font-semibold text-md">Statut :</p>
+                        <p class="font-light text-sm"> <span id="d-stock">100</span> dans le stock</p>
+                    </div>
+                </div>
+                <!--line-->
+                <div class="max-w-[608.04px] h-[1px] bg-slate-300 my-5">
+                </div>
+                <!------->
+
+                <div class="flex flex-col gap-2">
+                    <p class="flex gap-2 w-[100%]"><img class="w-[15px] h-[15px]" src="../assets/img/check-mark.png"
+                            alt="mark">
+                        <span class="text-[0.7rem]">
+                            Livraison gratuite sur toutes les commandes de
+                            plus de 100$</span>
+                    </p>
+                    <p class="flex gap-2 w-[100%]"><img class="w-[15px] h-[15px]" src=" ../assets/img/check-mark.png"
+                            alt="mark">
+                        <span class="text-[0.7rem]">
+                            Livraison rapid pendant 3 jours
+                        </span>
+                    </p>
+                </div>
+
+                <div class="flex gap-3 items-center justify-center bg-slate-100 mt-5 rounded-md max-w-[400px]">
+                    <img class="w-[49px] h-[37px]" src="../assets/img/visa.png" alt="">
+                    <img class="w-[59px] h-[47px]" src="../assets/img/card.png" alt="">
+                    <img class="w-[69px] h-[47px]" src="../assets/img/paypal.png" alt="">
+                </div>
+
+            </section>
+        </main>
+        <section class="bg-stone-100 py-3 px-5 rounded-md drop-shadow-sm mb-10">
+            <h2 class="text-[1.5rem] font-semibold mb-4">Description</h2>
+            <p class="text-sm font-light" id="d-product-description">
+                Votre assistant personnel
+                Bienvenue dans la prochaine génération d’assistance avec notre Future Helper Robot. Conçu avec une
+                intelligence artificielle de pointe, ce compagnon robotique sert d'assistant personnel, s'intégrant
+                parfaitement à votre routine quotidienne pour améliorer la productivité et la commodité. Que vous ayez
+                besoin d'aide pour la planification, l'organisation ou simplement une conversation amicale, notre Future
+                Helper Robot est toujours à votre service, apprenant de vos préférences et s'adaptant à vos besoins au
+                fil
+                du temps.
+
+                Gestion domestique sans effort
+                Dites adieu aux tâches banales et bonjour à la liberté retrouvée avec notre Future Helper Robot. Équipé
+                d'une mobilité agile et de manipulateurs adroits, il se déplace sans effort dans votre maison,
+                s'attaquant
+                aux tâches ménagères avec efficacité et précision. Du nettoyage et du rangement à la gestion des
+                appareils
+                domestiques intelligents et même à l'aide à la préparation des repas, ce robot révolutionne la façon
+                dont
+                vous entretenez votre espace de vie, vous laissant plus de temps pour vous concentrer sur ce qui compte
+                vraiment.
+            </p>
+        </section>
+
+        <!--Les produits populaires-->
+
+        <section class="py-5">
+            <h2 class="flex items-center gap-3 text-[1.5rem] font-semibold capitlize tracking-wide mb-5">
+                <div class="w-[13px] h-[38px] bg-blue-600 rounded-sm"></div>
+                Les Produits Populaire
+            </h2>
+
+            <div class="flex gap-5 flex-wrap justify-center py-5" id="d-popular-products">
+
+            </div>
+        </section>
+    </main>
+
+
+    <!--NewsLetter-->
+    <section class="bg-blue-950 py-10 px-10">
+        <div class="text-white flex md:justify-between justify-center items-center flex-wrap gap-5">
+            <div>
+                <h1 class="text-3xl font-semibold mb-3">Notre Newsletter</h1>
+                <p class="font-light text-sm">Recevoir notre vouveaux produit et mise à jour</p>
+            </div>
+            <form class="flex border-none p-2 bg-white rounded-md max-w-[500px]">
+                <input class="md:grow border-none outline-none px-5 text-black" type="email" name=""
+                    placeholder="Email Example ..">
+                <button class="bg-blue-950 py-2 px-5 rounded-md hover:bg-blue-600" type="button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    <!------------------------>
+
+
+
+    <!----Footer----->
+    <footer class="flex flex-col bg-black items-center py-8 md:px-20 px-10 ">
+        <div class="flex justify-between flex-wrap gap-x-2 gap-y-5 text-white w-full">
+            <img class="w-[100px] h-[70px]" src="../assets/img/watchify-white-logo.png" alt="">
+            <div>
+                <h4 class="font-semibold mb-2">Support</h4>
+                <ul>
+                    <li class="font-thin mb-1.5">111 Bijoy sarani, Dhaka,<br>DH 1515, Bangladesh.</li>
+                    <li class="font-thin mb-1.5">exclusive@gmail.com</li>
+                    <li class="font-thin mb-1.5">+88015-88888-9999</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2">Account</h4>
+                <ul>
+                    <li class="font-thin mb-1.5"><a href="#">My Account</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Login / Register</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Cart</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Wishlist</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Shop</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-semibold mb-2">Quick Links</h4>
+                <ul>
+                    <li class="font-thin mb-1.5"><a href="#">Privacy Policy</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Terms Of Use</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">FAQ</a></li>
+                    <li class="font-thin mb-1.5"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2">Download App</h4>
+                <span class="font-thin">Save $3 with App New User Only</span>
+                <img class="mt-3 max-w-[150px]" src="../assets/img/qr-app.png" alt="">
+                <div class="flex gap-2 mt-5">
+                    <img class="w-[25px]" src="../assets/img/facebook.png" alt="">
+                    <img class="w-[25px]" src="../assets/img/twitter.png" alt="">
+                    <img class="w-[25px]" src="../assets/img/instagram.png" alt="">
+                    <img class="w-[25px]" src="../assets/img/linkedin.png" alt="">
+                </div>
+            </div>
+        </div>
+        <span class="font-thin text-sm text-stone-500 mt-10">Copyright Rimel 2022. All right reserved</span>
+    </footer>
+
+
+    <script src="../assets/js/details.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../tailwind.config.js"></script>
+</body>
+
+</html>
