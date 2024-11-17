@@ -5,7 +5,7 @@ var nbrProduits;
 arrayPrd.map(Prd => {
     const prd = Prd.split(',');
 
-    fetch(`http://localhost:3000/produits/${prd[0]}`)
+    fetch(`https://product-api-yucm.onrender.com/api/products/${prd[0]}`)
     .then(res => res.json())
     .then(product => {
 
@@ -283,7 +283,7 @@ arrayPrd.map(Prd => {
 
 
 // Fonction de Récupération des Produits Intéréssants de l'API
-fetch(`http://localhost:3000/produits`)
+fetch(`https://product-api-yucm.onrender.com/api/products`)
 .then(res => res.json())
 .then(products => {
     for(let i=0 ; i<5 ; i++){

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  fetchproducts("http://localhost:3000/produits");
+  fetchproducts("https://product-api-yucm.onrender.com/api/products");
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     }
   }
-  fetchproducts("http://localhost:3000/produits");
+  fetchproducts("https://product-api-yucm.onrender.com/api/products");
 });
 
 $(document).ready(function () {

@@ -26,7 +26,7 @@ var stuff = full_url.split("?");
 var id = stuff[stuff.length - 1] - 1;
 // let id = 10;
 
-fetch("http://localhost:3000/produits")
+fetch("https://product-api-yucm.onrender.com/api/products")
   .then((responce) => responce.json())
   .then((data) => {
     // data.map((data) => {
